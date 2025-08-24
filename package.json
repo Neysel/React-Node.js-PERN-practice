@@ -1,0 +1,19 @@
+{
+  "name": "react-node.js-pern-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neysel/React-Node.js-PERN-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Neysel/React-Node.js-PERN-practice/issues"
+  },
+  "homepage": "https://github.com/Neysel/React-Node.js-PERN-practice#readme"
+}
