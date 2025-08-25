@@ -1,10 +1,25 @@
 require('dotenv').config()
+// dont forget about pgAdmin 
 const express = require('express')
 const sequelize = require('./db')
+const models = require('./models/models') // postgrSQL
+const cors = require('cors')
+const router = require('./routes/index')
 
 const PORT = process.env.PORT || 5000
 
-const app = express()
+const app = express()  // express work, its not a library its rather a framework because it provides a complete structure for building web applications.
+
+/// cors work : 
+app.use(cors())
+app.use(express.json())
+app.use('/api', router)
+
+/////////////////////////////// to test work
+// app.get('/', (request, response) => {
+//     response.status(200).json({message: 'WORKIING!!'})
+// })
+/////////////////////////////// 
 
 const start = async() => 
 {
