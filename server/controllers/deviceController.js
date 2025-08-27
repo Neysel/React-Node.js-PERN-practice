@@ -1,15 +1,15 @@
-class UserController {
+class DeviceController {
     async registration(req, res) {
 
     }
 
-    async login(req, res) {
+    async getAll(req, res) {
 
     }
-    async check(req, res) {
+    async getOne(req, res) {
 
     }
 }
 
 
-module.exports = new UserController()
+module.exports = new DeviceController()

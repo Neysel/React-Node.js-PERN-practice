@@ -7,7 +7,12 @@ class UserController {
 
     }
     async check(req, res) {
+        res.json('asdasdasd') 
+        // http://localhost:5000/api/user/auth
+        const query = req.query 
+        res.json(query)
 
+        //thats to get query params 
     }
 }
 

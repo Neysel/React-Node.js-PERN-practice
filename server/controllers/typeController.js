@@ -1,15 +1,12 @@
-class UserController {
-    async registration(req, res) {
+class TypeController {
+    async create(req, res) {
 
     }
 
-    async login(req, res) {
-
-    }
-    async check(req, res) {
+    async getAll(req, res) {
 
     }
 }
 
 
-module.exports = new UserController()
+module.exports = new TypeController()
