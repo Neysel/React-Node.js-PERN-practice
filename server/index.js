@@ -11,6 +11,7 @@ const cors = require('cors')
 const fileUpload = require('express-fileupload')
 const router = require('./routes/index')
 const errorHandler = require('./middleware/ErrorHandlingMiddleWare')
+const path = require('path')
 
 const PORT = process.env.PORT || 5000
 
@@ -19,6 +20,10 @@ const app = express()  // express work, its not a library its rather a framework
 /// cors work : 
 app.use(cors())
 app.use(express.json())
+app.use(express.static(path.resolve(__dirname, 'static')))
+// this is for http://localhost:5000/e995d34b-dd20-4757-a5d1-d25e0cbbfdb9.jpg
+
+
 app.use(fileUpload({}))
 app.use('/api', router) 
 // then route to index.js indede routes folder

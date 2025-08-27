@@ -21,6 +21,29 @@ class DeviceController {
     }
 
     async getAll(req, res) {
+        let {brandId, typeId, limit, page} = req.query
+        page = page || 1
+        limit = limit || 9
+        let offset = page * limit - limit
+// http://localhost:5000/api/device?limit=1 
+
+        let devices;
+        if (!brandId && !typeId) {
+            devices = await Device.findAll({limit, offset})
+        }
+        if (brandId && !typeId) {
+             devices = await Device.findAll({where:{brandId}, limit, offset})
+        }
+        if (!brandId && typeId)  {
+            devices = await Device.findAll({where:{typeId}, limit, offset})
+        }
+        if (brandId && typeId) {
+            devices = await Device.findAll({where:{typeId, brandId}, limit, offset})
+        }
+
+        // this is for http://localhost:5000/api/device?brandId=2 and http://localhost:5000/api/device?brandId=1
+        return res.json(devices)
+
 
     }
     async getOne(req, res) {
