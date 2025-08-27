@@ -1,13 +1,12 @@
 const Router = require('express')
 const router = new Router()
+const deviceController = require('../controllers/deviceController')
 
-router.post('/registration', (req, res) => {
-  // your logic here
-}) // to add 
-router.post('/login', (req, res) => {
-  // your logic here
-}) // 
-router.get('/',) // to get
-router.get('/:id',) // to get
+router.post('/', deviceController.create) // to add 
+
+router.get('/', deviceController.getAll) // to get
+router.get('/:id', deviceController.getOne) // to get
 
 module.exports = router
+
+// http://localhost:5000/api/device 

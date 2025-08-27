@@ -8,7 +8,9 @@ const express = require('express')
 const sequelize = require('./db')
 const models = require('./models/models') // postgrSQL
 const cors = require('cors')
+const fileUpload = require('express-fileupload')
 const router = require('./routes/index')
+const errorHandler = require('./middleware/ErrorHandlingMiddleWare')
 
 const PORT = process.env.PORT || 5000
 
@@ -17,8 +19,11 @@ const app = express()  // express work, its not a library its rather a framework
 /// cors work : 
 app.use(cors())
 app.use(express.json())
-app.use('/api', router)
+app.use(fileUpload({}))
+app.use('/api', router) 
 // then route to index.js indede routes folder
+app.use(errorHandler)
+
 
 /////////////////////////////// to test work
 // app.get('/', (request, response) => {
