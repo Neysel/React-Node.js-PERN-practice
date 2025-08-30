@@ -1,6 +1,7 @@
  import React from 'react';
- import {Routes, Route, Redirect} from 'react-router-dom'
+ import {Routes, Route, Redirect, Navigate} from 'react-router-dom'
 import { authRoutes, publicRoutes } from '../routes';
+import { SHOP_ROUTE } from '../utils/const';
  
  const AppRouter = () => {
     const isAuth = false
@@ -16,7 +17,9 @@ import { authRoutes, publicRoutes } from '../routes';
             {publicRoutes.map(({path, Component})=> 
                 <Route key={path} path={path} element={Component} />
             )}
+                <Route path='*' element={SHOP_ROUTE}/> 
         </Routes>
+              
     </div> );
  }
   
