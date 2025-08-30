@@ -2,7 +2,7 @@ require('dotenv').config()
 // dont forget about pgAdmin 
 // npm run dev
 // http://localhost:5000/ 
-// 
+// you can watch everything in packapge.json
 
 const express = require('express')
 const sequelize = require('./db')
