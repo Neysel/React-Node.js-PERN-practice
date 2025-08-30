@@ -49,10 +49,11 @@ class UserController {
         //   return  next(ApiError.badRequest('Doesnt have ID'))
         // }
         // res.json(id)
-
+        // res.json({message: "ALL RIGHT"})
         //thats to get query params 
 
-        res.json({message: "ALL RIGHT"})
+        const token = generateJWT(req.user.id, req.user.email, req.user.role)
+        return res.json({token})
     }
 }
 
