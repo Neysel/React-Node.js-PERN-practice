@@ -2,12 +2,18 @@
  import {Routes, Route, Redirect, Navigate} from 'react-router-dom'
 import { authRoutes, publicRoutes } from '../routes';
 import { SHOP_ROUTE } from '../utils/const';
- 
+import Shop from '../page/Shop';
+import { useContext } from 'react';
+ import {Context} from "../index" 
+
  const AppRouter = () => {
     const isAuth = false
-    console.log( publicRoutes.map(({path, Component})=> 
-                <Route key={path} path={path} element={Component} />
-            ))
+    // console.log( publicRoutes.map(({path, Component})=> 
+    //             <Route key={path} path={path} element={Component} />
+    //         ))
+
+    const {user} = useContext(Context)
+    console.log(user)
     return ( 
     <div>
         <Routes>
@@ -17,7 +23,7 @@ import { SHOP_ROUTE } from '../utils/const';
             {publicRoutes.map(({path, Component})=> 
                 <Route key={path} path={path} element={Component} />
             )}
-                <Route path='*' element={SHOP_ROUTE}/> 
+                <Route path='*' element={<Shop/>}/> 
         </Routes>
               
     </div> );
