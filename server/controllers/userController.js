@@ -53,7 +53,7 @@ class UserController {
         // res.json({message: "ALL RIGHT"})
         //thats to get query params 
 
-        const token = generateJWT(req.user.id, req.user.email, req.user.role)
+        const token = generateJwt(req.user.id, req.user.email, req.user.role)
         return res.json({token})
     }
 }

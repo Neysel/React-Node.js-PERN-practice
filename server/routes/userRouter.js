@@ -5,7 +5,7 @@ const authMiddleware = require('../middleware/authMiddleware')
 
 router.post('/registration', userController.registration) // add smth
 router.post('/login', userController.login) // get something
-router.get('/auth', userController.check)  // then watch whats inside
+router.get('/auth',authMiddleware, userController.check)  // then watch whats inside
 
 // works
 // router.get('/auth', (req, res) => {
