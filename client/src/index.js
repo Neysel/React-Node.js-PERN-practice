@@ -10,6 +10,9 @@ import DeviceStore from './store/DeviceStore';
 
 
 export const Context = createContext(null)
+// process.env.REACT_APP_API_URL
+// process.env.REACT_APP_API_URL
+console.log('react app url = ', process.env.REACT_APP_API_URL)
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
