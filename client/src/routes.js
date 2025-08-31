@@ -1,6 +1,7 @@
-import Admin from "./page/Admin"
+
 import { ADMIN_ROUTE, BASKET_ROUTE, DEVICE_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from "./utils/const"
 // import {Admin} from './page/Admin'
+import Admin from "./page/Admin"
 import Basket from './page/Basket'
 import Auth from './page/Auth'
 import DevicePage from './page/DevicePage'
