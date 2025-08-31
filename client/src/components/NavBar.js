@@ -14,6 +14,11 @@ const NavBar = observer(() => {
     const {user} = useContext(Context)
     const navigate = useNavigate()
 
+    const logOut = () => {
+        user.setUser({})
+        user.setIsAuth(false)
+    }
+
     return ( 
     <div>
         <nav style={{color:'white', padding: '15px'}} class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
@@ -27,13 +32,16 @@ const NavBar = observer(() => {
                                 Admin panel
                      </Button>
                     <Button
-                        onClick={() =>{ user.setIsAuth(false); navigate(LOGIN_ROUTE)}} className='ms-4'>
+                        // onClick={() =>{ user.setIsAuth(false)
+                        //  navigate(LOGIN_ROUTE)}} 
+                        onClick={() => logOut()}
+                         className='ms-4'>
                             Log out
                      </Button>
                  </Nav>
                 :
                 <Nav style={{color:'white'}} className="ml-auto">
-                    <Button  onClick={() => {user.setIsAuth(true); console.log(user.isAuth)}}>Authorization</Button>
+                    <Button  onClick={() => {user.setIsAuth(true); navigate(LOGIN_ROUTE)}}>Authorization</Button>
                 </Nav>
             }
               </Container>
