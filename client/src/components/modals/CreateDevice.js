@@ -4,11 +4,13 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import {Context} from "../../index" 
 import { Dropdown, Row, Col } from 'react-bootstrap';
-import { fetchBrands, fetchDevices, fetchTypes } from '../../http/deviceAPI';
+import { createDevice, fetchBrands, fetchDevices, fetchTypes } from '../../http/deviceAPI';
 import { useEffect } from 'react';
+import {observer} from "mobx-react-lite"
 
 
-const CreateDevice = ({show, onHide}) => {
+
+const CreateDevice = observer(({show, onHide}) => {
    const {device} = useContext(Context)
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
@@ -29,11 +31,25 @@ const CreateDevice = ({show, onHide}) => {
         setInfo(info.filter(i => i.number !== number ))
     }
 
+    const changeInfo = (key, value, number) => {
+        setInfo(info.map(i => i.number === number ? {...i, [key]: value}: i))
+    }
+
   const selectFile = e => {
         setFile(e.target.files[0])
         console.log(e.target.files)
     }
 
+const addDevice = () => {
+    const formData = new FormData()
+    formData.append('name', name)
+    formData.append('price', `${price}`)
+    formData.append('img', file)
+    formData.append('brandId', device.selectedBrand.id)
+    formData.append('typeId', device.selectedType.id)
+    formData.append('info', JSON.stringify(info)) 
+    createDevice(formData).then(data => onHide())
+}
 
     return ( 
         <div>
@@ -87,7 +103,7 @@ const CreateDevice = ({show, onHide}) => {
                         value={price}
                          onChange={e => setPrice(Number(e.target.value))}
                         placeholder='add price'
-                        type='number'
+                         type="number"
                         >
                     </Form.Control>
                      <Form.Control 
@@ -103,10 +119,18 @@ const CreateDevice = ({show, onHide}) => {
                     { info.map(i => 
                         <Row key={i.nummber} className='mt-4'>
                             <Col md={4}  className='mt-2'>
-                                <Form.Control placeholder='Property name' />
+                                <Form.Control 
+                                value={i.title}
+                                onChange={(e) => changeInfo('title', e.target.value, i.number)}
+                                placeholder='Property name'
+                                 />
                             </Col>
                             <Col md={4}  className='mt-2'>
-                                <Form.Control placeholder='Property description' />
+                                <Form.Control 
+                                value={i.description}
+                                onChange={(e) => changeInfo('description', e.target.value, i.number)} 
+                                placeholder='Property description'
+                                />
                             </Col>
                              <Col md={4}  className='mt-2'>
                                 <Button 
@@ -120,12 +144,12 @@ const CreateDevice = ({show, onHide}) => {
             </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onHide}>Add new device</Button>
+        <Button onClick={addDevice}>Add new device</Button>
         <Button onClick={onHide} variant='outline-danger'>Close</Button>
       </Modal.Footer>
     </Modal>
         </div>
      );
-}
+})
  
 export default CreateDevice;
