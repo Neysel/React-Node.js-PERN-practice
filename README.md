@@ -17,15 +17,12 @@ DB_HOST=localhost
 DB_PORT=5432
 SECRET_KEY=RANDOM_SECRET_KEY
 
-3. 
-run the server with
-#### npm run dev
-
+3. run the server with:
+### npm run dev
 ## client 
 
 1. create .env with this params
 REACT_APP_API_URL='http://localhost:5000/' or your localhost of the server 
 
-2.
-run the server with
-#### npm start
+2.run the server with:
+### npm start
