@@ -1,7 +1,7 @@
 # MAIN INFO
 
-This repo created with a help of some youtube videos, this is a raw imitation of the store, but it can be updated
-this repo includes work with local database (local server) and frontend work
+This repo created with a help of some youtube videos, this is a raw imitation of the store, but it can be updated.
+This repo includes work with local database (local server) and frontend work
 
 How to work with it
 
